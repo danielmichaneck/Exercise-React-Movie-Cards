@@ -1,11 +1,15 @@
 import { ReactElement, useState } from "react";
 
 
-export function AddMovie(): ReactElement {
-    const[title, setTitle] = useState<string>("");
-    const[rating, setRating] = useState<string>("50");
-    const[genre, setGenre] = useState<string>("a");
-    const[description, setDescription] = useState<string>("");
+interface AddMovieProps {
+    AddMovieCard: (movie: {title: string, rating: string, genre: string, description: string}) => void;
+}
+
+export function AddMovie({AddMovieCard}: AddMovieProps): ReactElement {
+    const[titleInput, setTitle] = useState<string>("");
+    const[ratingInput, setRating] = useState<string>("50");
+    const[genreInput, setGenre] = useState<string>("a");
+    const[descriptionInput, setDescription] = useState<string>("");
 
     const onChangeTitle: React.ChangeEventHandler<HTMLInputElement> = (e) => {
         setTitle(e.target.value);
@@ -28,25 +32,26 @@ export function AddMovie(): ReactElement {
     const onSubmitMovie: React.FormEventHandler<HTMLFormElement> = (e) => {
         e.preventDefault();
         const movie = {
-            movieTitle: title,
-            movieRating: rating,
-            movieGenre: genre,
-            movieDescription: description
+            title: titleInput,
+            rating: ratingInput,
+            genre: genreInput,
+            description: descriptionInput
         }
         console.log(movie);
+        AddMovieCard(movie);
     }
 
     return <div>
         <form onSubmit={onSubmitMovie}>
-            <input type="text" onChange={onChangeTitle} value={title}/>
-            <input type="range" onChange={onChangeRating} value={rating}/>
-            <select onChange={onChangeGenre} value={genre}>
+            <input type="text" onChange={onChangeTitle} value={titleInput}/>
+            <input type="range" onChange={onChangeRating} value={ratingInput}/>
+            <select onChange={onChangeGenre} value={genreInput}>
                 <option value="a">a</option>
                 <option value="b">b</option>
                 <option value="c">c</option>
                 <option value="d">d</option>
             </select>
-            <textarea onChange={onChangeDescription} value={description}/>
+            <textarea onChange={onChangeDescription} value={descriptionInput}/>
             <button>Clear</button>
             <button type="submit">Add</button>
         </form>
