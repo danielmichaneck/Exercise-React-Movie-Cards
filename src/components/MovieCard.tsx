@@ -1,5 +1,6 @@
 import { ReactElement } from "react";
 
+import "./MovieCard.css";
 
 interface MovieCardProps {
     movie: {

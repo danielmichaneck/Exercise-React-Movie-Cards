@@ -1,0 +1,12 @@
+.add-movie {
+}
+
+.add-movie-form {
+    display: grid;
+    width: 25%;
+}
+
+.add-movie-buttons {
+    display: flex;
+    justify-content: space-between;
+}

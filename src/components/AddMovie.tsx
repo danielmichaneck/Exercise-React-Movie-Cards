@@ -1,5 +1,6 @@
 import { ReactElement, useState } from "react";
 
+import "./AddMovie.css";
 
 interface AddMovieProps {
     AddMovieCard: (movie: {title: string, rating: string, genre: string, description: string}) => void;
@@ -41,8 +42,8 @@ export function AddMovie({AddMovieCard}: AddMovieProps): ReactElement {
         AddMovieCard(movie);
     }
 
-    return <div>
-        <form onSubmit={onSubmitMovie}>
+    return <div className="add-movie">
+        <form onSubmit={onSubmitMovie} className="add-movie-form">
             <input type="text" onChange={onChangeTitle} value={titleInput}/>
             <input type="range" onChange={onChangeRating} value={ratingInput}/>
             <select onChange={onChangeGenre} value={genreInput}>
@@ -52,8 +53,10 @@ export function AddMovie({AddMovieCard}: AddMovieProps): ReactElement {
                 <option value="d">d</option>
             </select>
             <textarea onChange={onChangeDescription} value={descriptionInput}/>
-            <button>Clear</button>
-            <button type="submit">Add</button>
+            <div className="add-movie-buttons">
+                <button>Clear</button>
+                <button type="submit">Add</button>
+            </div>
         </form>
     </div>
 }
