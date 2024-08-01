@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { AddMovie } from "./components/AddMovie";
-import { MovieCard } from "./components/MovieCard";
+import { MovieList } from "./components/MovieList";
 
 import "./App.css";
 
@@ -8,6 +8,7 @@ export function App() {
   const[movies, setMovies] = useState<{id: string, title: string, rating: string, genre: string, description: string}[]>([]);
 
   const addMovieCard = (movie: {id: string, title: string, rating: string, genre: string, description: string}) => {
+    console.log("Adding card with id: " + movie.id);
     setMovies((previousMovies) => [movie, ...previousMovies]);
   }
 
@@ -19,11 +20,8 @@ export function App() {
   return (
     <div className="app">
       <AddMovie submitMovieCard={addMovieCard}/>
-      <ul className="cards" id="cards">
-        {movies.map((movie) => (
-          <MovieCard movie={movie} movieCardClicked={removeMovieCard} key={movie.id}/>
-        ))}
-      </ul>
+      <MovieList updateMovieCard={removeMovieCard} movies={movies}/>
     </div>
   );
 }
+ 

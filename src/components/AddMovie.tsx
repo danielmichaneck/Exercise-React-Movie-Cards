@@ -39,8 +39,7 @@ export function AddMovie({submitMovieCard}: IAddMovieProps): ReactElement {
             genre: genreInput,
             description: descriptionInput
         }
-        console.log("movieId: " + movieId)
-        console.log(movie);
+        console.log("Submitting movie: " + movie);
         submitMovieCard(movie);
     }
 

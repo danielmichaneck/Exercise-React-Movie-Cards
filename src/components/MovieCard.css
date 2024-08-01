@@ -1,5 +1,6 @@
 .movie-card {
     width: 100%;
+    
     border: 0.25rem solid rgb(165, 200, 255);
     border-radius: 1rem;
 }
