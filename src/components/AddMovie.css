@@ -1,12 +1,66 @@
 .add-movie {
+    width: 100%;
+    border: 0.25rem solid rgb(165, 200, 255);
+    border-radius: 1rem;
+}
+
+.add-movie > * {
+    margin: 0;
 }
 
 .add-movie-form {
+    width: 100%;
+
     display: grid;
-    width: 25%;
+    grid-template-areas: "title-key title-input"
+                         "rating-key rating-input"
+                         "genre-key genre-input"
+                         "description-key description-input"
+                         "none buttons";
+}
+
+.keys {
+    background-color: rgb(165, 200, 255);
+}
+
+.inputs {
+    width: 70%;
 }
 
 .add-movie-buttons {
+    grid-area: buttons;
     display: flex;
     justify-content: space-between;
+}
+
+.title-key {
+    grid-area: title-key;
+}
+
+.rating-key {
+    grid-area: rating-key;
+}
+
+.genre-key {
+    grid-area: genre-key;
+}
+
+.description-key {
+    grid-area: description-key;
+}
+
+.title-input {
+    grid-area: title-input;
+}
+
+.rating-input {
+    grid-area: rating-input;
+}
+
+.genre-input {
+    grid-area: genre-input;
+}
+
+.description-input {
+    grid-area: description-input;
 }

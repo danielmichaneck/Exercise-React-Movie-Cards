@@ -1,5 +1,57 @@
 .movie-card {
-    width: 25%;
-    border: 0.25rem solid black;
+    width: 100%;
+    border: 0.25rem solid rgb(165, 200, 255);
+    border-radius: 1rem;
+}
+
+.movie-card > * {
+    margin: 0;
+}
+
+.movie-card-top {
+    display: grid;
+    grid-template-areas: "title rating"
+                         "title genre";
+
+    margin: 0;
+    padding-bottom: 1rem;
+
+    background-color: rgb(165, 200, 255);
+}
+
+.movie-card-top > * {
+    margin-bottom: 0;
+}
+
+.movie-title {
+    grid-area: title;
+
+    margin-left: 1rem;
+    margin-top: 1rem;
+
+    font-size: 2rem;
+}
+
+.movie-rating {
+    grid-area: rating;
+
+    margin-right: 1rem;
+    margin-top: 1rem;
+
+    text-align: end;
+    font-size: 1.25rem;
+}
+
+.movie-genre {
+    grid-area: genre;
+
+    margin-right: 1rem;
+    margin-top: 0.25rem;
+
+    text-align: end;
+    font-size: 1.25rem;
+}
+
+.movie-description {
     padding: 1rem;
 }
