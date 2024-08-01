@@ -1,6 +1,7 @@
 import { ReactElement, useState } from "react";
 
 import "./AddMovie.css";
+import { AddMovieKey } from "./AddMovieKey";
 
 interface IAddMovieProps {
     submitMovieCard: (movie: {id: string, title: string, rating: string, genre: string, description: string}) => void;
@@ -45,12 +46,16 @@ export function AddMovie({submitMovieCard}: IAddMovieProps): ReactElement {
 
     return <div className="add-movie">
         <form onSubmit={onSubmitMovie} className="add-movie-form">
-            <p className="title-key">Title</p>
-            <p className="rating-key">Rating</p>
-            <p className="genre-key">Genre</p>
-            <p className="description-key">Description</p>
+            <div className="keys-bg"/>
+            <AddMovieKey keyName="Title" keyClass="title-key"/>
+            <AddMovieKey keyName="Rating" keyClass="rating-key"/>
+            <AddMovieKey keyName="Genre" keyClass="genre-key"/>
+            <AddMovieKey keyName="Description" keyClass="description-key"/>
             <input type="text" className="title-input" onChange={onChangeTitle} value={titleInput}/>
-            <input type="range" className="rating-input" onChange={onChangeRating} value={ratingInput}/>
+            <div className="rating-field">
+                <p>{ratingInput}</p>
+                <input type="range" className="rating-input" onChange={onChangeRating} value={ratingInput}/>
+            </div>
             <select className="genre-input" onChange={onChangeGenre} value={genreInput}>
                 <option value="a">a</option>
                 <option value="b">b</option>
@@ -59,7 +64,7 @@ export function AddMovie({submitMovieCard}: IAddMovieProps): ReactElement {
             </select>
             <textarea className="description-input" onChange={onChangeDescription} value={descriptionInput}/>
             <div className="add-movie-buttons">
-                <button className="clear-button">Clear</button>
+                <button className="clear-button"><span className="material-symbols-outlined">restart_alt</span> Clear</button>
                 <button type="submit" className="add-button"><span className="material-symbols-outlined">add_circle</span> Add</button>
             </div>
         </form>

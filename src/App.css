@@ -1,6 +1,8 @@
 HTML {
     margin: 0;
+    padding-top: 1rem;
     font-family: "Roboto", "sans-serif";
+    background-color: whitesmoke;
 }
 
 .app {
