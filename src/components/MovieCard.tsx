@@ -1,4 +1,5 @@
 import React, { ReactElement } from "react";
+import { MovieCardSide } from "./MovieCardSide";
 
 import "./MovieCard.css";
 
@@ -23,8 +24,7 @@ export function MovieCard(props: IMovieCardProps): ReactElement {
     return <div className="movie-card" onClick={handleOnClick}>
         <div className="movie-card-top">
             <p className="movie-title">{props.movie.title}</p>
-            <p className="movie-rating">{props.movie.rating}/100</p>
-            <p className="movie-genre">{props.movie.genre}</p>
+            <MovieCardSide rating={props.movie.rating} genre={props.movie.genre}/>
         </div>
         <p className="movie-description">{props.movie.description}</p>
     </div>

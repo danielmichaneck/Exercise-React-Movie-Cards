@@ -1,8 +1,13 @@
 .movie-key {
     background-color: white;
     height: 2rem;
-    width: 8rem;
     border-radius: 1rem;
+}
+
+@media (width <= 600px) {
+    .movie-key {
+        border: 0.2rem solid rgb(165, 200, 255);
+    }
 }
 
 .movie-key > p {

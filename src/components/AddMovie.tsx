@@ -2,6 +2,9 @@ import { ReactElement, useState } from "react";
 
 import "./AddMovie.css";
 import { AddMovieKey } from "./AddMovieKey";
+import { AddMovieRatingField } from "./AddMovieRatingField";
+import { AddMovieGenre } from "./AddMovieGenre";
+import { AddMovieButtons } from "./AddMovieButtons";
 
 interface IAddMovieProps {
     submitMovieCard: (movie: {id: string, title: string, rating: string, genre: string, description: string}) => void;
@@ -13,6 +16,8 @@ export function AddMovie({submitMovieCard}: IAddMovieProps): ReactElement {
     const[genreInput, setGenre] = useState<string>("a");
     const[descriptionInput, setDescription] = useState<string>("");
     const[movieId, setMovieId] = useState<number>(0);
+
+    const movieGenres: string[] = ["Action", "Comedy", "Documentary", "Drama", "Family", "Horror", "Kids", "Romance"];
 
     const onChangeTitle: React.ChangeEventHandler<HTMLInputElement> = (e) => {
         setTitle(e.target.value);
@@ -30,6 +35,13 @@ export function AddMovie({submitMovieCard}: IAddMovieProps): ReactElement {
         setDescription(e.target.value);
     }
 
+    const clearAddMovie = () => {
+        setTitle("");
+        setRating("50");
+        setGenre("Action");
+        setDescription("");
+    }
+
     const onSubmitMovie: React.FormEventHandler<HTMLFormElement> = (e) => {
         e.preventDefault();
         setMovieId((previousValue) => previousValue + 1);
@@ -42,6 +54,7 @@ export function AddMovie({submitMovieCard}: IAddMovieProps): ReactElement {
         }
         console.log("Submitting movie: " + movie);
         submitMovieCard(movie);
+        clearAddMovie();
     }
 
     return <div className="add-movie">
@@ -51,22 +64,11 @@ export function AddMovie({submitMovieCard}: IAddMovieProps): ReactElement {
             <AddMovieKey keyName="Rating" keyClass="rating-key"/>
             <AddMovieKey keyName="Genre" keyClass="genre-key"/>
             <AddMovieKey keyName="Description" keyClass="description-key"/>
-            <input type="text" className="title-input" onChange={onChangeTitle} value={titleInput}/>
-            <div className="rating-field">
-                <p>{ratingInput}</p>
-                <input type="range" className="rating-input" onChange={onChangeRating} value={ratingInput}/>
-            </div>
-            <select className="genre-input" onChange={onChangeGenre} value={genreInput}>
-                <option value="a">a</option>
-                <option value="b">b</option>
-                <option value="c">c</option>
-                <option value="d">d</option>
-            </select>
-            <textarea className="description-input" onChange={onChangeDescription} value={descriptionInput}/>
-            <div className="add-movie-buttons">
-                <button className="clear-button"><span className="material-symbols-outlined">restart_alt</span> Clear</button>
-                <button type="submit" className="add-button"><span className="material-symbols-outlined">add_circle</span> Add</button>
-            </div>
+            <input type="text" placeholder="Title" className="title-input" onChange={onChangeTitle} value={titleInput}/>
+            <AddMovieRatingField update={onChangeRating} rating={ratingInput}/>
+            <AddMovieGenre update={onChangeGenre} genre={genreInput} genreList={movieGenres}/>
+            <textarea className="description-input" placeholder="Description" onChange={onChangeDescription} value={descriptionInput}/>
+            <AddMovieButtons clicked={clearAddMovie}/>
         </form>
     </div>
 }

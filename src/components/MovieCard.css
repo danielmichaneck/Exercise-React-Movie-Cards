@@ -10,14 +10,14 @@
 }
 
 .movie-card-top {
-    display: grid;
-    grid-template-areas: "title rating"
-                         "title genre";
+    display: flex;
+    justify-content: space-between;
 
     margin: 0;
     padding-bottom: 1rem;
 
-    background-color: rgb(165, 200, 255);
+    background-color: rgb(200, 225, 255);
+    border-radius: 0.75rem 0.75rem 0 0;
 }
 
 .movie-card-top > * {
@@ -30,29 +30,24 @@
     margin-left: 1rem;
     margin-top: 1rem;
 
-    font-size: 2rem;
+    max-width: 70%;
+    font-size: 1.25rem;
+    word-wrap: break-word;
 }
 
-.movie-rating {
-    grid-area: rating;
-
-    margin-right: 1rem;
-    margin-top: 1rem;
-
-    text-align: end;
-    font-size: 1.25rem;
+@media (width > 600px) {
+    .movie-title {
+        font-size: 1.5rem;
+    }
 }
 
-.movie-genre {
-    grid-area: genre;
-
-    margin-right: 1rem;
-    margin-top: 0.25rem;
-
-    text-align: end;
-    font-size: 1.25rem;
+@media (width > 600px) {
+    .movie-title {
+        font-size: 2rem;
+    }
 }
 
 .movie-description {
     padding: 1rem;
+    word-wrap: break-word;
 }

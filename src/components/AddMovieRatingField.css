@@ -1,0 +1,9 @@
+.rating-field {
+    grid-area: rating-field;
+    
+    display: flex;
+    justify-content: space-around;
+
+    margin-top: 0;
+    margin-bottom: 0;
+}
