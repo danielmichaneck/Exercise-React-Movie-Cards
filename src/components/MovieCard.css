@@ -41,12 +41,6 @@
     }
 }
 
-@media (width > 600px) {
-    .movie-title {
-        font-size: 2rem;
-    }
-}
-
 .movie-description {
     padding: 1rem;
     word-wrap: break-word;

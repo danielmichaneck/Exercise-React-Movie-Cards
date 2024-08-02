@@ -20,6 +20,13 @@ HTML {
     }
 }
 
+@media (width > 800px) {
+    .app {
+        width: 62.5%;
+        margin-left: 19.125%;
+    }
+}
+
 @media (width > 1000px) {
     .app {
         width: 50%;
